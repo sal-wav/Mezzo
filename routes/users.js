@@ -7,79 +7,94 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 
 const isPassword = async (password, hash) =>
-	await bcrypt.compare(password, hash);
+  await bcrypt.compare(password, hash);
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
-	res.send("respond with a resource");
+  res.send("respond with a resource");
 });
 
 //getting user by id
 router.get(
-	"/:id(\\d+)",
-	asyncHandler(async (req, res, next) => {
-		const user = await User.findByPk(req.params.id);
-		res.render(req.user);
-	})
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const user = await User.findByPk(req.params.id);
+    res.render(req.user);
+  })
 );
+
+
 
 router.get(
-	"/login",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		res.render("testlogin", { token: req.csrfToken() });
-	})
+  "/login",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    res.render("testlogin", { token: req.csrfToken() });
+  })
 );
 
 router.post(
-	"/login",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		const { email, password } = req.body;
-		const user = await User.findOne({ where: { email } });
-		let hash = user.password;
-		if (isPassword(password, hash)) {
-			loginUser(req, res, user);
-			res.render("testlogin", { user });
-		} else {
-			res.render("error");
-		}
-	})
+  "/login",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email } });
+    let hash = user.password;
+    if (isPassword(password, hash)) {
+      loginUser(req, res, user);
+      res.render("testlogin", { user });
+    } else {
+      res.render("error");
+    }
+  })
 );
 
 router.post(
-	"/logout",
-	asyncHandler(async (req, res, next) => {
-		await logoutUser(req, res);
-		res.redirect("/");
-	})
+  "/logout",
+  asyncHandler(async (req, res, next) => {
+    await logoutUser(req, res);
+    res.redirect("/");
+  })
 );
 
+//CREATE
 router.get(
-	"/register",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		res.render("testregister", { token: req.csrfToken() });
-	})
+  "/register",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    res.render("testregister", { token: req.csrfToken() });
+  })
 );
 
 router.post(
-	"/register",
-	csrfProtection,
-	asyncHandler(async (req, res, next) => {
-		const { firstName, lastName, email, password } = req.body;
-		let hash = await bcrypt.hash(password, 10);
+  "/register",
+  csrfProtection,
+  asyncHandler(async (req, res, next) => {
+    const { firstName, lastName, email, password } = req.body;
+    let hash = await bcrypt.hash(password, 10);
 
-		await User.create({
-			firstName,
-			lastName,
-			email,
-			password: hash,
-		});
+    await User.create({
+      firstName,
+      lastName,
+      email,
+      password: hash,
+    });
 
-		res.redirect("/");
-	})
+    res.redirect("/");
+  })
 );
+
+//DELETING THE USER BY ID 
+router.delete("/:id(\\d+)", asyncHandler(async (req, res) => {
+
+  console.log('UMM HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO', req.user)
+  const user = await User.findByPk(req.params.id)
+  await user.destroy()
+  res.status(204).end()
+}))
+
+
+
 
 module.exports = router;
 
