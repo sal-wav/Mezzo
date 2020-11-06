@@ -184,6 +184,8 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 
 }));
 
+router.get('/')
+
 
 //DELETE ROUTE GOES HERE >>><<<<<<
 
