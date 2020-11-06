@@ -142,6 +142,15 @@ router.post(
   })
 );
 
+//Avatar Picture Route
+
+router.put("/avatar", asyncHandler(async(req, res, next)=> {
+  const profilePic = await User.update({
+    image: req.body.image
+  })
+  res.redirect(`/users/${profilePic.id}`);
+}));
+
 //REGISTER GET AND POST ROUTE
 router.get(
   "/register",
