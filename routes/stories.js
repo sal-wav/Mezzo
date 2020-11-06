@@ -59,19 +59,19 @@ router.post('/:id/like', asyncHandler(async(req, res)=> {
 }))
 
 //CRUD OPERATIONS GO HERE
-router.get('/create', asyncHandler(async(req, res) => {
-  res.render('storyForm');
+router.get('/create', csrfProtection, asyncHandler(async(req, res) => {
+  res.render('storyForm', { token: req.csrfToken() });
 }));
 
-router.post('/create', csrfProtection, asyncHandler(async(req, res, next) => {
+router.post('/create', asyncHandler(async(req, res, next) => {
   const newStory = await Story.create({
     title: req.body.title,
     subtitle: req.body.subtitle,
     content: req.body.content,
-    author: "hi",
-    csrfToken: req.csrfToken()
+    authorId: res.locals.user.id,
+    image: req.body.image
   })
-   res.redirect(`/${newStory.id}`);
+   res.redirect(`/stories/${newStory.id}`);
 }));
 
 
