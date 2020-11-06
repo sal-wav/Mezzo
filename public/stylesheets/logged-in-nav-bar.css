@@ -87,6 +87,10 @@ drop down, create story, log out, delete account, categories */
     text-decoration: none;
 }
 
+.header-nav-buttons::after{
+    content:"🔍";
+}
+
 .avatarcontainer{
     width: 344px;
     margin: 0 auto;
