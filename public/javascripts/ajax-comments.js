@@ -21,8 +21,9 @@ window.addEventListener('DOMContentLoaded', (e) => {
         returnedComments.forEach((comment) => {
             let html = `
             <div#comments>
-                <div.comments>
+                <div.comment>
                     <p>${comment.comment}</p>
+                    <p.commentDate>Posted ${comment.createdAt}</p>
                 </div>
             </div>`
             commentsHtml.push(html);
