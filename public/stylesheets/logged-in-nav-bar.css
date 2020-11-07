@@ -27,15 +27,17 @@ drop down, create story, log out, delete account, categories */
     justify-content: flex-end;
 }
 
-#about-us{
+#upgrade{
     display: inline;
     width: 100px;
-	height: 33px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	height: 38px;
+	border: 1px solid rgba(240, 227, 227, 0.959);
 	border-radius: 5px;
-	background-color: #a5fccd;
+    background-color: cornflowerblue;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
+    background-image: url('/public/images/upgrade.png');
+    background-size: cover;
 }
 
 #register{
@@ -101,7 +103,7 @@ drop down, create story, log out, delete account, categories */
 }
 
 .avatar{
-    margin: 5px;
+    margin: 15px;
     width: 50px;
     height: 50px;
     border-radius: 50%;

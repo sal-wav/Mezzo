@@ -193,7 +193,10 @@ router.post("/register", csrfProtection, userValidator, asyncHandler(async (req,
 
 }));
 
-router.get('/')
+router.get('/upgrade', asyncHandler (async(req, res)=>{
+  res.render('upgrade')
+
+}))
 
 
 //DELETE ROUTE GOES HERE >>><<<<<<

@@ -8,6 +8,7 @@ html
       link(rel='stylesheet' href='/stylesheets/logged-in-nav-bar.css')
       link(rel='stylesheet' href='/stylesheets/home-feed.css')
       link(rel='stylesheet' href='/stylesheets/read-story.css')
+      link(rel='stylesheet' href='/stylesheets/premium.css')
   body
     .header-nav-bar
       .header-nav-logo
@@ -28,7 +29,7 @@ html
       else
           .buttonContainer
             .dropdown.dropbtn
-              img.avatar(src="/images/person-avatar-Imgur.jpg")
+              img.avatar(src="/images/bear.png")
               .dropdowncontent
                 ul
                   li
@@ -39,5 +40,6 @@ html
                     a.hidden(href="/users/avatar" name="image" id="avatar") Update Avatar
                   li
                     a.hidden(href=`/users/${locals.user.id}/destroy`) Delete Account
-            button#about-us(name="about-us" href="/users/about-us") About Us
+            form(action="/users/upgrade", method='get')        
+              button#upgrade(href="/users/upgrade") Upgrade
   block content
