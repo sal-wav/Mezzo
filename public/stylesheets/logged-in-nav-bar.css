@@ -36,8 +36,6 @@ drop down, create story, log out, delete account, categories */
     background-color: #4af99b;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
-    background-image: url('/public/images/upgrade.png');
-    background-size: cover;
 }
 
 #register{
