@@ -35,7 +35,7 @@ router.post(
 		if (parseInt(isFollowingId, 10) === parseInt(userId, 10))
 			// check if the user is attempting to follow themselves
 			res.json("same user try later");
-		// If not follow exists in our database create a new one
+		// If no follow exists in our database create a new one
 		else if (!follow) {
 			const newFollow = await Follow.create({
 				isFollowingId,
