@@ -33,7 +33,7 @@ drop down, create story, log out, delete account, categories */
 	height: 38px;
 	border: 1px solid rgba(240, 227, 227, 0.959);
 	border-radius: 5px;
-    background-color: cornflowerblue;
+    background-color: #4af99b;
     font-size: 12pt;
     margin: 4px 4px 4px 4px;
     background-image: url('/public/images/upgrade.png');

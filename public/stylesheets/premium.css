@@ -1,5 +1,5 @@
 .header-nav-bar{
-    background-color: cornflowerblue;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -10,7 +10,7 @@
     height: 464px;
     left: 0px;
     top: 0px;
-    background: cornflowerblue;
+    background: #4af99b;
     border-color:cornsilk;
     border-style: solid;
 
@@ -53,7 +53,7 @@ h3#upgrade2{
     height: 150px;
     display: grid;
     grid-template-columns: auto auto;
-    background-color: cornflowerblue;
+    background-color: #4af99b;
     border-color: cornsilk;
     text-align: center;
 }
@@ -73,7 +73,7 @@ h2#upgrade3{
     border-style: solid;
     height:300px;
     border-color: blanchedalmond;
-    background-color: cornflowerblue;
+    background-color: #4af99b;
     text-align: center;
 }
 

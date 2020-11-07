@@ -37,8 +37,6 @@ html
                   li
                     a.hidden(href="/users/logout") Log Out
                   li
-                    a.hidden(href="/users/avatar" name="image" id="avatar") Update Avatar
-                  li
                     a.hidden(href=`/users/${locals.user.id}/destroy`) Delete Account
             form(action="/users/upgrade", method='get')        
               button#upgrade(href="/users/upgrade") Upgrade
